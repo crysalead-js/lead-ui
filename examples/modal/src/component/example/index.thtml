@@ -1,0 +1,19 @@
+<div class="page-container">
+
+  <div class="page-content-wrapper">
+
+    <div class="page-content">
+
+      <div>
+        <button on-click="{{ modal() }}">Open Modal</button>
+      </div>
+
+      <button on-click="{{ reverse() }}">Reverse</button>
+
+      <div each="(item) in list">Line #{{ item.value }}</h2>
+
+    </div>
+
+  </div>
+
+</div>

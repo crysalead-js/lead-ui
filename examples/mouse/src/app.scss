@@ -1,0 +1,25 @@
+@import "../vendor/bootstrap/assets/stylesheets/bootstrap";
+
+.area {
+    padding: 0 80px 80px 0;
+    background-color: #eee;
+    margin-bottom: 20px;
+    width: 440px;
+    overflow: hidden;
+}
+
+.square {
+    float: left;
+    margin: 80px 0 0 80px;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: #aaa;
+    border-radius: 4px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

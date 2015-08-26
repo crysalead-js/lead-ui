@@ -1,0 +1,27 @@
+<div class="modal-dialog">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <button type="button" class="close" on-click="{{ cancel() }}" aria-hidden="true">x</button>
+      <h4 class="modal-title">{{ title }}</h4>
+
+    </div>
+
+    <div class="modal-body">
+
+      <div component="{{ tagName }}" isolated="false"></div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <button class="btn default" on-click="{{ cancel() }}">Cancel</button>
+      <button class="btn blue" on-click="{{ ok() }}">Ok</button>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-9 products">
+
+      <ul>
+
+        <li>
+          <draggable
+            each="(product, id) in products"
+            data-drag-id="{{ id }}"
+            data-on-start="{{ dragStart }}"
+            data-on-end="{{ dragEnd }}"
+          >
+            <a class="item" href="#">
+              <img src="img/{{ id }}.png">
+              <div class="description">
+                <p><strong>{{ product.name }}</strong></p>
+                <p><strong>Price</strong>: <span>{{ product.price }}</span></p>
+              </div>
+            </a>
+          </draggable>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <droppable
+      class="col-md-3 cart {{ {'active': active} }}"
+      data-on-drop="{{ drop }}"
+    >
+      <div>
+        <h1>Shopping Cart</h1>
+        <ul>
+          <li each="(qty, id) in cart">
+            <span class="price">{{ products[id].price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span><span class="quantity">{{ qty }}</span>{{ products[id].name }}
+          </li>
+        </ul>
+        <p class="total"><strong>Total:</strong> <span>{{ total.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}</span></p>
+        <div class="drop-here" if="{{ active }}">Drop here to add to cart</div>
+      </div>
+
+    </droppable>
+
+  </div>
+
+</div>

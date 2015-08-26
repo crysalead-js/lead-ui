@@ -1,0 +1,27 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="area {{ {'bg-success': active, 'bg-inactive': !active} }}"
+      on-mouseenter="{{ onEnter($e) }}"
+      on-mouseleave="{{ onLeave($e) }}"
+    >
+
+      <div each="(square, i) in squares"
+        class="square"
+        on-mousedown="{{ onDown(i) }}"
+        on-mouseup="{{ onUp(i) }}"
+      >
+        Down: {{ square.down }}
+        <br/>
+        Up: {{ square.up }}
+      </div>
+
+    </div>
+
+    <div>#MouseEnter: {{ numEnter }}</div>
+    <div>#MouseLeave: {{ numLeave }}</div>
+
+  </div>
+
+</div>

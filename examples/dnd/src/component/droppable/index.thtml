@@ -1,0 +1,3 @@
+<div class="droppable" on-dragenter="{{ onEnter($e) }}" on-dragleave="{{ onLeave($e) }}" on-dragover="{{ onOver($e) }}" on-drop="{{ onDrop($e) }}">
+  <content></content>
+</div>

@@ -34,7 +34,7 @@ function hyperscriptify(file) {
   };
 
   function end() {
-    stream.queue("module.exports = " + JSON.stringify(transpiler.transpile(data)));
+    stream.queue("module.exports = function(" + Transpiler.renderer + ", " + Transpiler.scope + ", c) {return " + transpiler.transpile(data) + "}");
     stream.queue(null);
   };
 

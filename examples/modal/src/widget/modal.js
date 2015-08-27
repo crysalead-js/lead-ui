@@ -1,4 +1,3 @@
-import domElement from "dom-element";
 import _ from "../../../../src/util";
 
 class Modal {
@@ -44,7 +43,7 @@ class Modal {
       element.style.display = "block";
       setTimeout(function() {
         if (config[name + 'ShowClass']) {
-          domElement.addClass(element, config[name + 'ShowClass']);
+          element.classList.add(config[name + 'ShowClass']);
         }
       }, 25);
     });

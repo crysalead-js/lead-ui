@@ -183,7 +183,7 @@ class Component {
    * @return mixed        The generated virtual DOM.
    */
   render() {
-    var node = Function('$', 's', 'c', "return " + this.template())(this.renderer(), this.get(), this);
+    var node = this.template()(this.renderer(), this.get(), this);
     node = _.isArray(node) ? node[0] : node;
     if (!node) {
       return;

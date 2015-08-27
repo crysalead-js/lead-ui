@@ -28,7 +28,7 @@ class Droppable extends Component {
     }
 
     scope.onDrop = function(event) {
-      event.preventDefault()
+      event.preventDefault();
       (data.onDrop || _.noop())(event.dataTransfer.getData('text'));
     }
 

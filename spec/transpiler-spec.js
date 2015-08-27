@@ -10,7 +10,7 @@ describe("Template", function() {
   function build(text, scope) {
     return new Component({
       scope: scope,
-      template: transpiler.transpile(text),
+      template: new Function('$', 's', 'c', 'return ' + transpiler.transpile(text) + ';'),
       renderer: renderer
     });
   };

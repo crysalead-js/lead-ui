@@ -1,6 +1,6 @@
 var jsdom = require('jsdom');
 require('source-map-support').install();
-require('babel/register');
+require('babel-core/register');
 
 global.document = jsdom.jsdom();
 global.window = global.document.parentWindow;

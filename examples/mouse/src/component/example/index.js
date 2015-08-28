@@ -1,42 +1,47 @@
-import Component from '../../../../../src/component';
+import ui from '../../../../..';
 import template from './index.thtml';
+
+var Component = ui.Component;
+var _ = ui.util;
 
 class Example extends Component {
 
   vm(scope, data, component) {
 
-    scope.squares = {};
+    _.extend(scope, {
 
-    scope.numEnter = 0;
+      squares: {},
 
-    scope.numLeave = 0;
+      numEnter: 0,
 
-    scope.active = false;
+      numLeave: 0,
 
-    scope.onEnter = function(event) {
-      scope.numEnter++;
-      scope.active = true;
-    }
+      active: false,
 
-    scope.onLeave = function(event) {
-      scope.numLeave++;
-      scope.active = false;
-    }
+      onEnter: function(event) {
+        scope.numEnter++;
+        scope.active = true;
+      },
 
-    scope.onDown = function(num) {
-      scope.squares[num].down++;
-    }
+      onLeave: function(event) {
+        scope.numLeave++;
+        scope.active = false;
+      },
 
-    scope.onUp = function(num) {
-      scope.squares[num].up++;
-    }
+      onDown: function(num) {
+        scope.squares[num].down++;
+      },
 
-  }
+      onUp: function(num) {
+        scope.squares[num].up++;
+      }
 
-  mount(scope) {
+    });
+
     for (var i = 0; i < 4; i++) {
       scope.squares[i] = { 'up': 0, 'down': 0 };
     }
+
   }
 
   template() {

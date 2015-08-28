@@ -213,45 +213,11 @@ class Component {
    * //////////////////////////////////////////
    */
 
-   vm(scope, data, component) {
-   }
-
-  /*
-   * mount(scope) {
-   * }
-   *
-   * mounted(scope, element) {
-   * }
-   *
-   * updated(scope, element) {
-   * }
-   *
-   * unmounted(scope, element) {
-   * }
-   */
+   vm(scope, data, component) {}
 }
 
 Emitter(Component.prototype);
 
 Component.counter = 1;
-
-Component.prototype._emit = Component.prototype.emit;
-
-/**
- * Emits an event.
- *
- * @param  String  event The event name to emit.
- * @return Boolean       Returns true if event had listeners, false otherwise.
- */
-Component.prototype.emit = function(event) {
-  var args = Array.prototype.slice.call(arguments, 1);
-  var methodArgs = args.slice();
-  methodArgs.unshift(this._scope);
-  methodArgs.unshift(event);
-  if (_.isFunction(this[event])) {
-    this[event].apply(this, methodArgs.slice(1));
-  }
-  return this._emit.apply(this, methodArgs);
-}
 
 export default Component;

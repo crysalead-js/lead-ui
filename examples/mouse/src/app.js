@@ -1,10 +1,9 @@
-import domLayer from 'dom-layer';
-import Renderer from '../../../src/renderer';
+import ui from '../../..';
 import Example from './component/example';
 
-domLayer.events.init();
+ui.domLayer.events.init();
 
-var renderer = new Renderer();
+var renderer = new ui.Renderer();
 
 var components = renderer.components();
 components.register('example', Example);

@@ -1,17 +1,24 @@
-import Component from '../../../../../src/component';
+import ui from '../../../../..';
 import template from './index.thtml';
+
+var Component = ui.Component;
+var _ = ui.util;
 
 class Dialog extends Component {
 
   vm(scope, data, component) {
 
-    scope.ok = function() {
-      component.emit('close');
-    }
+    _.extend(scope, {
 
-    scope.cancel = function() {
-      component.emit('cancel');
-    }
+      ok: function() {
+        component.emit('close');
+      },
+
+      cancel: function() {
+        component.emit('cancel');
+      }
+
+    });
   }
 
   template() {

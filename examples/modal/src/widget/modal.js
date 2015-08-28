@@ -1,9 +1,11 @@
-import _ from "../../../../src/util";
+import ui from '../../../..';
+
+var _ = ui.util;
 
 class Modal {
 
   static config(options) {
-  _.each(options, function(value, key) {
+    _.each(options, function(value, key) {
       Modal[key] = value;
     });
   }

@@ -1,7 +1,5 @@
-//import util from "util";
-import Parser from "htmlparser2/lib/Parser";
-
 import _ from "./util";
+import Parser from "htmlparser2/lib/Parser";
 import DomHandler from "./dom-handler";
 
 class Transpiler {

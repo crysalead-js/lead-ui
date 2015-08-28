@@ -1,9 +1,13 @@
-var Component = require("./src/component");
-var Components = require("./src/components");
-var Renderer = require("./src/renderer");
+import Component from "./src/component";
+import Components from "./src/components";
+import Renderer from "./src/renderer";
+import domLayer from "dom-layer";
+import util from "./src/util";
 
-module.exports = {
+export default {
   Component: Component,
   Components: Components,
-  Renderer: Renderer
+  Renderer: Renderer,
+  domLayer: domLayer,
+  util: util
 };

@@ -1,11 +1,11 @@
-var config = require("../config");
-var gulp = require("gulp");
-var del = require('del');
+import config from '../config';
+import gulp from 'gulp';
+import del from 'del';
 
-gulp.task("clean", function(callback){
+gulp.task('clean', function(callback){
   del([
-    config.webroot.path + "js/**",
-    config.webroot.path + "css/**"
+    config.webroot.path + 'js/**',
+    config.webroot.path + 'css/**'
   ], {
     force: true
   }, callback);

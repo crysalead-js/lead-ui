@@ -6,7 +6,7 @@ var webroot = "./webroot/";
 
 global.window = global;
 
-module.exports = {
+export default {
   webroot: {
     path:  webroot
   },

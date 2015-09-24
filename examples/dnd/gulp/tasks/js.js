@@ -1,20 +1,16 @@
-var config = require("../config");
-var path = require('path');
-var gulp = require("gulp");
-var gulpif = require('gulp-if');
-var uglify = require("uglify-js");
-var browserify = require("browserify");
-var babelify = require("babelify");
-var exorcist = require('exorcist');
-var map = require("vinyl-map");
-var buffer = require("vinyl-buffer");
-var source = require("vinyl-source-stream");
-
-var through = require("through");
-require("babel/register")({
-  only: /src/
-});
-var Transpiler = require("../../../../src/transpiler");
+import config from '../config';
+import path from 'path';
+import gulp from 'gulp';
+import gulpif from 'gulp-if';
+import uglify from 'uglify-js';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import exorcist from 'exorcist';
+import map from 'vinyl-map';
+import buffer from 'vinyl-buffer';
+import source from 'vinyl-source-stream';
+import through from 'through';
+import Transpiler from '../../../../src/transpiler';
 
 var env = /*'production';*/ process.env.LEAD_ENV;
 
@@ -34,7 +30,7 @@ function hyperscriptify(file) {
   };
 
   function end() {
-    stream.queue("module.exports = function(" + Transpiler.renderer + ", " + Transpiler.scope + ", c) {return " + transpiler.transpile(data) + "}");
+    stream.queue('module.exports = function(' + Transpiler.renderer + ', ' + Transpiler.scope + ', c) {return ' + transpiler.transpile(data) + '}');
     stream.queue(null);
   };
 
@@ -49,7 +45,7 @@ function getBundler() {
     })
     .transform(hyperscriptify)
     .transform(babelify.configure({
-      blacklist: ["react"],
+      blacklist: ['react'],
       nonStandard: false,
       sourceMapRelative: path.dirname(path.dirname(path.dirname(__dirname)))
     }));
@@ -57,20 +53,22 @@ function getBundler() {
   return bundler;
 }
 
-var jsMin = map(function(code, filename) {
-  return uglify.minify(code.toString(), {
-    fromString: true
-  }).code;
-});
+function getJsMin() {
+  return map(function(code, filename) {
+    return uglify.minify(code.toString(), {
+      fromString: true
+    }).code;
+  });
+}
 
-gulp.task("js", function() {
+gulp.task('js', function() {
   return getBundler()
     .bundle()
-    .on("error", function(err) {console.trace(err.toString());this.emit("end");})
+    .on('error', function(err) {console.trace(err.toString());this.emit('end');})
     .pipe(gulpif(env !== 'production', exorcist(config.webroot.path + 'js/app.js.map')))
-    .pipe(source("app.js"))
+    .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(gulpif(env === 'production', jsMin))
+    .pipe(getJsMin())
     .pipe(gulp.dest(config.webroot.path + 'js'));
-    //.pipe(fs.createWriteStream(config.webroot + "dist/app.js"));
+    //.pipe(fs.createWriteStream(config.webroot + 'dist/app.js'));
 });

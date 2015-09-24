@@ -1,2 +1,3 @@
-var gulp = require("gulp");
-gulp.task("default", ["js", "css"]);
+import gulp from 'gulp';
+
+gulp.task('default', ['js', 'css']);
